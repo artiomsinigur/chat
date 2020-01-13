@@ -1,0 +1,31 @@
+/* Player */
+.webcast-player img {
+    max-width: 100%;
+}
+
+/* Card */
+.card-body {
+    height: 430px; 
+    overflow-x: scroll;
+}
+
+/* Chat */
+.chat-date {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    color: lightgray;
+}
+
+.chat-pseudo {
+    font-weight: 500; 
+    font-size: 13px;
+}
+
+.chat-text {
+    font-size: 13px;
+}
+
+.chat-message {
+    font-size: 12px;
+}
