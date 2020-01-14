@@ -9,7 +9,7 @@ export class ManageMessages {
             arr.map(item => {
                 cardBody.innerHTML += `
                     <div class="media">
-                        <span class="chat-date" id="date">${item.created_at}</span>
+                        <span class="chat-date" id="date">${item.created_at.slice(11, 19)}</span>
                         <div class="media-body ml-2">
                             <span class="chat-pseudo text-info" id="pseudo">${item.pseudo}</span>
                             <span class="chat-text" id="getMessage">${item.message}</span>
@@ -21,7 +21,7 @@ export class ManageMessages {
             cardBody.scrollTop = cardBody.scrollHeight;
         });
 
-        window.setInterval(this.getAllMessages, 2000);
+        // window.setInterval(this.getAllMessages, 2000);
     }
 
     postMessage() {
