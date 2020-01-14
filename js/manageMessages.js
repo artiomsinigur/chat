@@ -24,6 +24,17 @@ export class ManageMessages {
         // window.setInterval(this.getAllMessages, 2000);
     }
 
+    getDBCounter() {
+        loadData(document.formMessage, 'GET', 'server/getLastCounter.php', function(arr) {
+            return arr;
+        }.bind(loadData));
+    }
+
+    getLastCounter() {
+        console.log(this.getDBCounter());
+        return this.getDBCounter;
+    };
+
     postMessage() {
         // loadData(document.formMessage, 'POST', 'server/setMessage.php', (xhr) => {
         //     console.log(xhr);

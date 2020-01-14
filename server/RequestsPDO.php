@@ -21,8 +21,7 @@ class RequestsPDO {
 
         $stmt = $pdo->query("SELECT * FROM " . "$table" . " ORDER BY " . $column . " DESC LIMIT 1");
         $data = $stmt->fetch();
-        return $data;
-        // echo json_encode($data);
+        echo json_encode($data);
     }
 
     /**

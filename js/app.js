@@ -10,6 +10,8 @@ document.formMessage.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new ManageMessages();
     data.postMessage();
+    const pseudo = data.getLastCounter();
+    console.log(pseudo());
 });
 
 document.formMessage.addEventListener('keydown', (e) => {
