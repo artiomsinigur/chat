@@ -2,26 +2,34 @@ import {loadData} from './ajax.js';
 
 export class ManageMessages {
     getAllMessages() {
-        loadData(document.formMessage, 'GET', 'server/listingMessages.php', function(arr) {
-            const cardBody = document.querySelector('.card-body');
-            cardBody.innerHTML = '';
-            arr.reverse();
-            arr.map(item => {
-                cardBody.innerHTML += `
-                    <div class="media">
-                        <span class="chat-date" id="date">${item.created_at}</span>
-                        <div class="media-body ml-2">
-                            <span class="chat-pseudo text-info" id="pseudo">${item.pseudo}</span>
-                            <span class="chat-text" id="getMessage">${item.message}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-     
-            cardBody.scrollTop = cardBody.scrollHeight;
-        });
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then((res) => {
+                    return res.json();
+                })
+                .then((messages) => {
+                    console.log(messages);
+                });
+                return;
 
-        window.setInterval(this.getAllMessages, 2000);
+
+
+
+        const cardBody = document.querySelector('.card-body');
+        cardBody.innerHTML = '';
+        arr.reverse();
+        arr.map(item => {
+            cardBody.innerHTML += `
+                <div class="media">
+                    <span class="chat-date" id="date">${item.created_at}</span>
+                    <div class="media-body ml-2">
+                        <span class="chat-pseudo text-info" id="pseudo">${item.pseudo}</span>
+                        <span class="chat-text" id="getMessage">${item.message}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        // cardBody.scrollTop = cardBody.scrollHeight;
+        // window.setInterval(this.getAllMessages, 2000);
     }
 
     postMessage() {

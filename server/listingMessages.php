@@ -23,5 +23,7 @@ if (!isset($_SESSION['nr_webdiffusion'])) {
         $data->setCompteur($_SESSION['nr_webdiffusion']);
     }
 }
+
 $data = new RequestsPDO();
 $data->getAllMessages();
+
