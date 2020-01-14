@@ -4,7 +4,7 @@ session_start();
 
 $data = new RequestsPDO();
 
-// 1 si pas de session et la bd est vide
+// Case 1: Si pas de session et la bd est vide
 if (!isset($_SESSION['nr_webdiffusion'])) {
     $get_nr_webdiff = $data->getLastItem('compteurs', 'compteur');
     if ($get_nr_webdiff === false) {
@@ -13,7 +13,7 @@ if (!isset($_SESSION['nr_webdiffusion'])) {
     }
 }
 
-// 2 si pas de session mais la bd n'est pas vide
+// Case 2: Si pas de session mais la bd n'est pas vide
 if (!isset($_SESSION['nr_webdiffusion'])) {
     $get_nr_webdiff = $data->getLastItem('compteurs', 'compteur');
     $last_nr_webdiff = intval($get_nr_webdiff['nr_webdiffusion']);

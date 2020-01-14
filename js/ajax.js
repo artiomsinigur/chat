@@ -9,6 +9,11 @@ export function loadData(form, method, url, callback) {
     const xhr = new XMLHttpRequest();
     const data = new FormData(form);
     // data.append('pseudo', 'u_4');
+
+    xhr.open(method, url, true);
+    // xhr.responseType = 'json';
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(data);
     
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
@@ -21,9 +26,4 @@ export function loadData(form, method, url, callback) {
             }
         }
     }
-
-    xhr.open(method, url, true);
-    // xhr.responseType = 'json';
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send(data);
 }

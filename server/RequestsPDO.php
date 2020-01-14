@@ -3,30 +3,18 @@ require_once('db.php');
 
 class RequestsPDO {
     /**
-     * Reads the content from a table
-     * @param      $id The cle primaire from the table you'll want to read
+     * Get last item
      */
-    public function getItem($id, $table) {
-        global $pdo;
-
-        $stmt = $pdo->prepare("SELECT * FROM " . " $table " . " WHERE id=?");
-        $stmt->execute([$id]); 
-        $data = $stmt->fetch();
-        echo json_encode($data);
-
-    }
-    
     public function getLastItem($table, $column) {
         global $pdo;
 
         $stmt = $pdo->query("SELECT * FROM " . "$table" . " ORDER BY " . $column . " DESC LIMIT 1");
         $data = $stmt->fetch();
         return $data;
-        // echo json_encode($data);
     }
 
     /**
-     * { read all the rows from a table }
+     * { Read 50 rows from a table }
      */
     public function getAllMessages() {
         global $pdo;
@@ -40,6 +28,9 @@ class RequestsPDO {
         }
     }
 
+    /**
+     * Set the number of webdiffusion
+     */
     public function setCompteur($nr_webdiffusion) {
         global $pdo;
 
@@ -55,6 +46,9 @@ class RequestsPDO {
         }
     }
 
+    /**
+     * Set the message
+     */
     public function setMessage($nr_webdiffusion, $pseudo, $message) {
         global $pdo;
 

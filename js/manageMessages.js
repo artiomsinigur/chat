@@ -1,6 +1,9 @@
 import {loadData} from './ajax.js';
 
 export class ManageMessages {
+    /**
+     * Get last 50 messages from the DB and inject them to HTML
+     */
     getAllMessages() {
         loadData(document.formMessage, 'GET', 'server/listingMessages.php', function(arr) {
             const cardBody = document.querySelector('.card-body');
@@ -20,19 +23,12 @@ export class ManageMessages {
      
             cardBody.scrollTop = cardBody.scrollHeight;
         });
-
-        // window.setInterval(this.getAllMessages, 2000);
     }
 
+    /**
+     * Post a new message to DB
+     */
     postMessage() {
-        // loadData(document.formMessage, 'POST', 'server/setMessage.php', (xhr) => {
-        //     console.log(xhr);
-        //     xhr.onload = function() {
-        //         const data = new ManageMessages();
-        //         data.getAllMessages();
-        //     }
-        // });
-
         const xhr = new XMLHttpRequest();
         const data = new FormData(document.formMessage);
 
