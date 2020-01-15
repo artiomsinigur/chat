@@ -2,16 +2,19 @@ import {ManageMessages} from './manageMessages.js';
 
 window.addEventListener('load', () => {
     const data = new ManageMessages();
-    data.getAllMessages();
 
+    // Create a callback function to display data
+    const getId = (arr) => {
+        console.log(arr, 'Data from callback');
+    };
+    // Set getId function as a parameter to getAllMessages to return data 
+    data.getAllMessages(getId);
 });
 
 document.formMessage.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new ManageMessages();
     data.postMessage();
-    const pseudo = data.getLastCounter();
-    console.log(pseudo());
 });
 
 document.formMessage.addEventListener('keydown', (e) => {

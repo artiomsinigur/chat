@@ -1,8 +1,12 @@
 import {loadData} from './ajax.js';
 
 export class ManageMessages {
-    getAllMessages() {
+    getAllMessages(setIdCallback) {
+
         loadData(document.formMessage, 'GET', 'server/listingMessages.php', function(arr) {
+            // return ids via a callback from BD
+            setIdCallback(arr);
+
             const cardBody = document.querySelector('.card-body');
             cardBody.innerHTML = '';
             arr.reverse();
@@ -24,26 +28,7 @@ export class ManageMessages {
         // window.setInterval(this.getAllMessages, 2000);
     }
 
-    getDBCounter() {
-        loadData(document.formMessage, 'GET', 'server/getLastCounter.php', function(arr) {
-            return arr;
-        }.bind(loadData));
-    }
-
-    getLastCounter() {
-        console.log(this.getDBCounter());
-        return this.getDBCounter;
-    };
-
     postMessage() {
-        // loadData(document.formMessage, 'POST', 'server/setMessage.php', (xhr) => {
-        //     console.log(xhr);
-        //     xhr.onload = function() {
-        //         const data = new ManageMessages();
-        //         data.getAllMessages();
-        //     }
-        // });
-
         const xhr = new XMLHttpRequest();
         const data = new FormData(document.formMessage);
 
